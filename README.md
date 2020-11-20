@@ -14,7 +14,12 @@ Juan Pablo Grisales Botero(jumpa96)
 ## API
 [Jikan](https://jikan.moe)
 
-## EndPoints		
+## EndPoints
+### [top](https://jikan.docs.apiary.io/#reference/0/top/top-request-example+schema?console=1)
+Devuelve una lista superior filtrada de un tipo de typeelemento. Por ejemplo, las principales películas de Anime (tipo)
+
+### [Schedule](https://jikan.docs.apiary.io/#reference/0/producer/schedule-request-example+schema?console=1)	
+Devuelve Programa de anime de la semana o día especificado
 
 ## Lenguaje
 [Python](https://www.python.org/downloads/)
