@@ -25,11 +25,11 @@ Devuelve Programa de anime de la semana o día especificado
 [Python](https://www.python.org/downloads/)
 
 ## Librerías
-[JikanPy]((https://jikanpy.readthedocs.io/en/latest/))
-[pandas](https://pandas.pydata.org/docs/)
-[psycopg2](https://www.psycopg.org/docs/)
-[sqlalchemy](https://docs.sqlalchemy.org/en/14/)
-[datetime](https://docs.python.org/3/library/datetime.html)
+[JikanPy](https://jikanpy.readthedocs.io/en/latest/) ,
+[pandas](https://pandas.pydata.org/docs/) ,
+[psycopg2](https://www.psycopg.org/docs/) ,
+[sqlalchemy](https://docs.sqlalchemy.org/en/14/) ,
+[datetime](https://docs.python.org/3/library/datetime.html) ,
 [urllib2](https://docs.python.org/2/library/urllib2.html)
 
 ## Herramientas	
