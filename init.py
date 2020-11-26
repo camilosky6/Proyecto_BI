@@ -2,6 +2,11 @@ from jikanpy import Jikan
 import urllib3
 import json
 import time
+import boto3
+
+#Conexion a S3
+s3 = boto3.client('s3')
+#s3.upload_file('Directorio donde se va a upload','pruebabucketproyect', 'nuevo nombre del file a transferir a s3')
 
 http = urllib3.PoolManager()
 
@@ -23,10 +28,11 @@ mangaComedy = {'mangaComedy': []}
 
 #Json con los animes y mangas proximos a estrenar
 seasonLater = {'seasonLater': []}
-
+'''
 r = http.request('GET', f'https://api.jikan.moe/v3/genre/manga/4/{i}')
 r2 = json.loads(r.data.decode('utf-8'))
 print(len(r2))
+'''
 
 '''
 # Este bucle recorre los animes y mangas proximos a estrenar
