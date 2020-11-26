@@ -83,7 +83,7 @@ for i in range(1, 39):
 '''
 
 
-print(len(mangaComedy['mangaComedy']))
+print(len(animeFantasy['animeFantasy']))
 #print(animeAction)
 #animes['anime']=animes['anime']+r4['anime']
 #print(r.data)
