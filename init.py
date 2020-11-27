@@ -6,8 +6,17 @@ import json
 import time
 import boto3
 
+
+aws_access_key_id = 'AKIAZFC7DVDYSMINXTND'
+aws_secret_access_key = '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'
+region_name = 'us-east-2'
+session = boto3.session.Session(aws_access_key_id=aws_access_key_id,
+                                aws_secret_access_key=aws_secret_access_key,
+                                region_name=region_name)
+s3 = session.client('s3')
+
 #Conexion a S3
-s3 = boto3.client('s3')
+#s3 = boto3.client('s3')
 
 http = urllib3.PoolManager()
 
@@ -27,18 +36,42 @@ mangaAction = {'mangaAction': []}
 #11100
 mangaComedy = {'mangaComedy': []}
 
-#Json con los animes y mangas proximos a estrenar
-seasonLater = {'seasonLater': []}
+#Json con los animes en el top 5000
+#5000
+topAnime = {'topAnime': []}
+
+#Json con los mangas en el top 5000
+#5000
+topManga = {'topManga': []}
 
 
 '''
-# Este bucle recorre los animes y mangas proximos a estrenar
-for i in range(1, 2):
-    r = http.request('GET', f'https://api.jikan.moe/v3/genre/manga/4/{i}')
+# Este bucle recorre el top 5000 de mangas
+for i in range(1, 101):
+    r = http.request('GET', f'https://api.jikan.moe/v3/top/manga/{i}/')
     r2 = json.loads(r.data.decode('utf-8'))
-    mangaComedy['mangaComedy'] = mangaComedy['mangaComedy'] + r2['manga']
-    time.sleep(2)
+    topManga['topManga'] = topManga['topManga'] + r2['top']
+    time.sleep(3)
+
+with open('topManga.json', 'w') as file:
+    json.dump(topManga, file, indent=4)
+
+s3.upload_file('topManga.json', 'pruebabucketproyect', 'topManga.json')
+
+
+# Este bucle recorre el top 5000 de animes
+for i in range(1, 101):
+    r = http.request('GET', f'https://api.jikan.moe/v3/top/anime/{i}/')
+    r2 = json.loads(r.data.decode('utf-8'))
+    topAnime['topAnime'] = topAnime['topAnime'] + r2['top']
+    time.sleep(3)
+
+with open('topAnime.json', 'w') as file:
+    json.dump(topAnime, file, indent=4)
+
+s3.upload_file('topAnime.json', 'pruebabucketproyect', 'topAnime.json')
 '''
+
 '''
 # Este bucle recorre todas las paginas de mangas de comedia
 for i in range(1, 112):
@@ -51,8 +84,8 @@ with open('mangaComedy.json', 'w') as file:
     json.dump(mangaComedy, file, indent=4)
 
 s3.upload_file('mangaComedy.json', 'pruebabucketproyect', 'mangaComedy.json')
-
 '''
+
 '''
 # Este bucle recorre todas las paginas de mangas de acción
 for i in range(1, 73):
@@ -81,6 +114,7 @@ with open('animeFantasy.json', 'w') as file:
 
 s3.upload_file('animeFantasy.json', 'pruebabucketproyect', 'animeFantasy.json')
 
+
 '''
 # Este bucle recorre todas las paginas de animes de accion
 for i in range(1, 39):
@@ -96,6 +130,7 @@ s3.upload_file('animeAction.json', 'pruebabucketproyect', 'animeAction.json')
 '''
 
 print(len(animeFantasy['animeFantasy']))
+
 #print(animeAction)
 #animes['anime']=animes['anime']+r4['anime']
 #print(r.data)
