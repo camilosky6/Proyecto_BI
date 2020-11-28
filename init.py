@@ -6,7 +6,7 @@ import json
 import time
 import boto3
 
-
+#Conexion a S3
 aws_access_key_id = 'AKIAZFC7DVDYSMINXTND'
 aws_secret_access_key = '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'
 region_name = 'us-east-2'
@@ -15,7 +15,7 @@ session = boto3.session.Session(aws_access_key_id=aws_access_key_id,
                                 region_name=region_name)
 s3 = session.client('s3')
 
-#Conexion a S3
+
 #s3 = boto3.client('s3')
 
 http = urllib3.PoolManager()
