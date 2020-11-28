@@ -45,7 +45,45 @@ topAnime = {'topAnime': []}
 topManga = {'topManga': []}
 
 
-'''
+#Este ciclo trae todos los animes de fantasia
+for i in range(1, 33):
+    r = http.request('GET', f'https://api.jikan.moe/v3/genre/anime/10/{i}')
+    r2 = json.loads(r.data.decode('utf-8'))
+    animeFantasy['animeFantasy'] = animeFantasy['animeFantasy'] + r2['anime']
+    time.sleep(2)
+
+with open('animeFantasy.json', 'w') as file:
+    json.dump(animeFantasy, file, indent=4)
+
+s3.upload_file('animeFantasy.json', 'pruebabucketproyect', 'Anime/Fantasy/animeFantasy.json')
+
+
+
+# Este bucle recorre todas las paginas de animes de accion
+for i in range(1, 39):
+    r = http.request('GET', f'https://api.jikan.moe/v3/genre/anime/1/{i}')
+    r2 = json.loads(r.data.decode('utf-8'))
+    animeAction['animeAction'] = animeAction['animeAction'] + r2['anime']
+    time.sleep(2)
+
+with open('animeAction.json', 'w') as file:
+    json.dump(animeAction, file, indent=4)
+
+s3.upload_file('animeAction.json', 'pruebabucketproyect', 'Anime/Action/animeAction.json')
+
+# Este bucle recorre todas las paginas de mangas de acción
+for i in range(1, 73):
+    r = http.request('GET', f'https://api.jikan.moe/v3/genre/manga/1/{i}')
+    r2 = json.loads(r.data.decode('utf-8'))
+    mangaAction['mangaAction'] = mangaAction['mangaAction'] + r2['manga']
+    time.sleep(2)
+
+with open('mangaAction.json', 'w') as file:
+    json.dump(mangaAction, file, indent=4)
+
+s3.upload_file('mangaAction.json', 'pruebabucketproyect', 'Manga/Action/mangaAction.json')
+
+
 # Este bucle recorre el top 5000 de mangas
 for i in range(1, 101):
     r = http.request('GET', f'https://api.jikan.moe/v3/top/manga/{i}/')
@@ -56,7 +94,7 @@ for i in range(1, 101):
 with open('topManga.json', 'w') as file:
     json.dump(topManga, file, indent=4)
 
-s3.upload_file('topManga.json', 'pruebabucketproyect', 'topManga.json')
+s3.upload_file('topManga.json', 'pruebabucketproyect', 'Manga/Top/topManga.json')
 
 
 # Este bucle recorre el top 5000 de animes
@@ -69,10 +107,10 @@ for i in range(1, 101):
 with open('topAnime.json', 'w') as file:
     json.dump(topAnime, file, indent=4)
 
-s3.upload_file('topAnime.json', 'pruebabucketproyect', 'topAnime.json')
-'''
+s3.upload_file('topAnime.json', 'pruebabucketproyect', 'Anime/Top/topAnime.json')
 
-'''
+
+
 # Este bucle recorre todas las paginas de mangas de comedia
 for i in range(1, 112):
     r = http.request('GET', f'https://api.jikan.moe/v3/genre/manga/4/{i}')
@@ -83,51 +121,8 @@ for i in range(1, 112):
 with open('mangaComedy.json', 'w') as file:
     json.dump(mangaComedy, file, indent=4)
 
-s3.upload_file('mangaComedy.json', 'pruebabucketproyect', 'mangaComedy.json')
-'''
+s3.upload_file('mangaComedy.json', 'pruebabucketproyect', 'Manga/Comedy/mangaComedy.json')
 
-'''
-# Este bucle recorre todas las paginas de mangas de acción
-for i in range(1, 73):
-    r = http.request('GET', f'https://api.jikan.moe/v3/genre/manga/1/{i}')
-    r2 = json.loads(r.data.decode('utf-8'))
-    mangaAction['mangaAction'] = mangaAction['mangaAction'] + r2['manga']
-    time.sleep(2)
-
-with open('mangaAction.json', 'w') as file:
-    json.dump(mangaAction, file, indent=4)
-
-s3.upload_file('mangaAction.json', 'pruebabucketproyect', 'mangaAction.json')
-
-'''
-
-
-#Este ciclo trae todos los animes de fantasia
-for i in range(1, 33):
-    r = http.request('GET', f'https://api.jikan.moe/v3/genre/anime/10/{i}')
-    r2 = json.loads(r.data.decode('utf-8'))
-    animeFantasy['animeFantasy'] = animeFantasy['animeFantasy'] + r2['anime']
-    time.sleep(2)
-
-with open('animeFantasy.json', 'w') as file:
-    json.dump(animeFantasy, file, indent=4)
-
-s3.upload_file('animeFantasy.json', 'pruebabucketproyect', 'animeFantasy.json')
-
-
-'''
-# Este bucle recorre todas las paginas de animes de accion
-for i in range(1, 39):
-    r = http.request('GET', f'https://api.jikan.moe/v3/genre/anime/1/{i}')
-    r2 = json.loads(r.data.decode('utf-8'))
-    animeAction['animeAction'] = animeAction['animeAction'] + r2['anime']
-    time.sleep(2)
-
-with open('animeAction.json', 'w') as file:
-    json.dump(animeAction, file, indent=4)
-
-s3.upload_file('animeAction.json', 'pruebabucketproyect', 'animeAction.json')
-'''
 
 print(len(animeFantasy['animeFantasy']))
 
