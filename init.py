@@ -6,7 +6,7 @@ import json
 import time
 import boto3
 #Bucket
-bucket_name = 'pruebabucketproyect'
+bucket_name = 'myawsbucketbi'
 
 #Conexion a S3
 aws_access_key_id = 'AKIAZFC7DVDYSMINXTND'
