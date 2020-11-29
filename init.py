@@ -5,6 +5,8 @@ import urllib3
 import json
 import time
 import boto3
+#Bucket
+bucket_name = 'pruebabucketproyect'
 
 #Conexion a S3
 aws_access_key_id = 'AKIAZFC7DVDYSMINXTND'
@@ -55,7 +57,7 @@ for i in range(1, 33):
 with open('animeFantasy.json', 'w') as file:
     json.dump(animeFantasy, file, indent=4)
 
-s3.upload_file('animeFantasy.json', 'pruebabucketproyect', 'Anime/Fantasy/animeFantasy.json')
+s3.upload_file('animeFantasy.json', bucket_name, 'Anime/Fantasy/animeFantasy.json')
 
 
 
@@ -69,7 +71,7 @@ for i in range(1, 39):
 with open('animeAction.json', 'w') as file:
     json.dump(animeAction, file, indent=4)
 
-s3.upload_file('animeAction.json', 'pruebabucketproyect', 'Anime/Action/animeAction.json')
+s3.upload_file('animeAction.json', bucket_name, 'Anime/Action/animeAction.json')
 
 # Este bucle recorre todas las paginas de mangas de acción
 for i in range(1, 73):
@@ -81,7 +83,7 @@ for i in range(1, 73):
 with open('mangaAction.json', 'w') as file:
     json.dump(mangaAction, file, indent=4)
 
-s3.upload_file('mangaAction.json', 'pruebabucketproyect', 'Manga/Action/mangaAction.json')
+s3.upload_file('mangaAction.json', bucket_name, 'Manga/Action/mangaAction.json')
 
 
 # Este bucle recorre el top 5000 de mangas
@@ -94,7 +96,7 @@ for i in range(1, 101):
 with open('topManga.json', 'w') as file:
     json.dump(topManga, file, indent=4)
 
-s3.upload_file('topManga.json', 'pruebabucketproyect', 'Manga/Top/topManga.json')
+s3.upload_file('topManga.json', bucket_name, 'Manga/Top/topManga.json')
 
 
 # Este bucle recorre el top 5000 de animes
@@ -107,7 +109,7 @@ for i in range(1, 101):
 with open('topAnime.json', 'w') as file:
     json.dump(topAnime, file, indent=4)
 
-s3.upload_file('topAnime.json', 'pruebabucketproyect', 'Anime/Top/topAnime.json')
+s3.upload_file('topAnime.json', bucket_name, 'Anime/Top/topAnime.json')
 
 
 
@@ -121,7 +123,7 @@ for i in range(1, 112):
 with open('mangaComedy.json', 'w') as file:
     json.dump(mangaComedy, file, indent=4)
 
-s3.upload_file('mangaComedy.json', 'pruebabucketproyect', 'Manga/Comedy/mangaComedy.json')
+s3.upload_file('mangaComedy.json', bucket_name, 'Manga/Comedy/mangaComedy.json')
 
 
 print(len(animeFantasy['animeFantasy']))
