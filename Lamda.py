@@ -7,21 +7,21 @@ import psycopg2
 from sqlalchemy import create_engine
 
 # Nombre del bucket de donde se traeran los datos
-bucket_name = 'myawsbucketbi'
+bucket_name = 'mybucketbi'
 
 engine = create_engine(
-    'postgresql://postgres:12345678@database-1.cjqx4noi3om2.us-east-2.rds.amazonaws.com:5432/postgres')
+    'postgresql://postgres:12345678@database-1.cdzpvsiyqdm9.us-east-2.rds.amazonaws.com:5432/postgres')
 
 # Conexion a S3
-aws_access_key_id = 'AKIAZFC7DVDY3OHGJUTT'
-aws_secret_access_key = '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'
+aws_access_key_id = 'AKIA4SLODYPZZKT2NJUI'
+aws_secret_access_key = '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'
 region_name = 'us-east-2'
 session = boto3.session.Session(aws_access_key_id=aws_access_key_id,
                                 aws_secret_access_key=aws_secret_access_key,
                                 region_name=region_name)
 s3 = session.resource('s3')
 
-
+'''
 # Traemos el json del top de manga
 content_MangaTop = s3.Object(bucket_name, 'Manga/Top/topManga.json')
 
@@ -230,7 +230,7 @@ data_df_animeFantasy = data_df_animeFantasy.append(df_animeFantasy[
 
 
 data_df_animeFantasy.to_sql('AnimeFantasy', con=engine, index=True)
-
+'''
 
 # Traemos el json de animes de accion
 content_AnimeAction = s3.Object(bucket_name, 'Anime/Action/animeAction.json')
