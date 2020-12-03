@@ -75,5 +75,6 @@ data_df_animeAction = data_df_animeAction.append(df_animeAction[
                                                           'licence', 'r18',
                                                           'kids', 'event', 'origen', 'date_add']], ignore_index=True)
 
-engine = create_engine('postgresql://postgres:12345678@database-1.cjqx4noi3om2.us-east-2.rds.amazonaws.com:5432/database-1')
+#
+engine = create_engine('postgresql://postgres:12345678@database-1.cjqx4noi3om2.us-east-2.rds.amazonaws.com:5432/postgres')
 data_df_animeAction.to_sql('AnimeAction', con=engine, index=True)
