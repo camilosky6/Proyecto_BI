@@ -6,11 +6,11 @@ import json
 import time
 import boto3
 #Bucket
-bucket_name = 'myawsbucketbi'
+bucket_name = 'mybucketbi'
 
 #Conexion a S3
-aws_access_key_id = 'AKIAZFC7DVDYSMINXTND'
-aws_secret_access_key = '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'
+aws_access_key_id = 'AKIA4SLODYPZVA43RYBP'
+aws_secret_access_key = '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'
 region_name = 'us-east-2'
 session = boto3.session.Session(aws_access_key_id=aws_access_key_id,
                                 aws_secret_access_key=aws_secret_access_key,
